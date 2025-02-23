@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, CardFooter, CardGroup, CardHeader, CardLink, CardText } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 import Post from '../components/post/Post.js';
@@ -49,7 +49,7 @@ export default function Profile() {
                 </div>
                 <hr className='row w-100'></hr>
                 <div>
-                    {profile.posts != undefined &&
+                    {profile.posts !== undefined &&
                         Object.entries(profile.posts).map((post, index) => {
                             return (
                                 <div key={index}>

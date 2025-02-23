@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { Button, Modal, Form, Alert, Toast, ToastContainer } from "react-bootstrap";
 
 export default function CreatePost() {

@@ -32,7 +32,6 @@ function get_user_by_username(username) {
     })
 }
 
-
 export {
     delete_all_users,
     get_user_by_username,

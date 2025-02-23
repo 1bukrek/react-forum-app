@@ -16,18 +16,6 @@ function get_user_posts(author_id) {
     })
 }
 
-/* trigger for updating a post
-
-database.run(`
-    CREATE TRIGGER IF NOT EXISTS update_post_timestamp
-    AFTER UPDATE ON posts
-    BEGIN
-        UPDATE posts SET updated_at = CURRENT_TIMESTAMP WHERE id = NEW.id;
-    END;
-`)
-
-*/
-
 export {
     create_post,
     get_user_posts

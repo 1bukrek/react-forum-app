@@ -3,7 +3,7 @@ import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-import database from "./config/database.js";
+import database from "./models/database.js";
 
 const app = express();
 app.use(express.json());
