@@ -57,7 +57,7 @@ export default function CreatePost() {
     return (
         <>
             <ToastContainer className="position-fixed bottom-0 end-0 p-3" style={{ zIndex: 1 }}>
-                <Toast show={notification} onClose={toggleShow} role='alert' className='align-items-center bg-white'>
+                <Toast show={notification} onClose={toggleShow} role='alert' className='align-items-center bg-dark text-secondary'>
                     <Toast.Header closeButton={true}>
                         <strong className="me-auto">Convonet</strong>
                         <small>just now</small>
@@ -66,11 +66,11 @@ export default function CreatePost() {
                 </Toast>
             </ToastContainer>
             <Button onClick={handleShow} className="bg-transparent border text-secondary-emphasis border-light-subtle">Create Post</Button>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header>
+            <Modal show={show} onHide={handleCloseCancel} keyboard={false} backdrop="static">
+                <Modal.Header closeButton className="bg-dark text-white border-secondary">
                     <Modal.Title>Create Post</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="bg-dark text-white">
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Title</Form.Label>
                         <Form.Control
@@ -81,6 +81,8 @@ export default function CreatePost() {
                             rows={1}
                             maxLength={60}
                             required
+                            autoFocus
+                            className="bg-transparent border-secondary text-white"
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -92,12 +94,14 @@ export default function CreatePost() {
                             as="textarea"
                             rows={6}
                             maxLength={1500}
+                            className="bg-transparent border-secondary text-white"
                             required />
+
                     </Form.Group>
                     {serverMessage && <Alert className="mb-0" variant="danger">{serverMessage}</Alert>}
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button className="col" variant="danger" onClick={handleCloseCancel}>Cancel</Button>
+                <Modal.Footer className="bg-dark text-white border-secondary">
+                    <Button className="col " variant="danger" onClick={handleCloseCancel}>Cancel</Button>
                     <Button className="col" variant="success" onClick={handleClose}>Post</Button>
                 </Modal.Footer>
             </Modal>

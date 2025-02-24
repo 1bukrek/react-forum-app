@@ -9,18 +9,18 @@ export default function PostContent({ post, handleLike, handleDislike, likeStatu
 
     return (
         <>
-            <Card className='container col-md-6 ms-md-auto mt-3 p-0'>
-                <Card.Body><strong><a href={`/user/${post.author}`}>u/{post.author}</a></strong> | {post.created_at}</Card.Body>
+            <Card className='container col-md-6 ms-md-auto mt-3 p-0 bg-dark border-secondary text-secondary'>
+                <Card.Body><a href={`/user/${post.author}`} className="link-light">u/{post.author}</a> | {post.created_at}</Card.Body>
             </Card>
-            <Card className='w-50 top-10 mt-0 start-50 translate-middle-x mt-3' >
-                <Card.Header><p className='mb-0'>{post.title}</p></Card.Header>
+            <Card className='w-50 top-10 mt-0 start-50 translate-middle-x mt-3 bg-dark text-white border-secondary'>
+                <Card.Header><p className='mb-0'><strong>{post.title}</strong></p></Card.Header>
                 <Card.Body><p className='mb-0'>{post.description}</p></Card.Body>
                 <Card.Footer>
                     <div className='mb-0 w-25'>
-                        <ListGroup horizontal>
-                            <ListGroup.Item><strong>{post.score}</strong></ListGroup.Item>
-                            <ListGroup.Item variant='success' action onClick={handleLike} active={likeStatus === 'like'}>Like</ListGroup.Item>
-                            <ListGroup.Item variant='danger' action onClick={handleDislike} active={likeStatus === 'dislike'}>Dislike</ListGroup.Item>
+                        <ListGroup horizontal >
+                            <ListGroup.Item className="border-secondary bg-dark text-secondary"><strong>{post.score}</strong></ListGroup.Item>
+                            <ListGroup.Item className="border-secondary" variant='success' action onClick={handleLike} active={likeStatus === 'like'}>Like</ListGroup.Item>
+                            <ListGroup.Item className="border-secondary" variant='danger' action onClick={handleDislike} active={likeStatus === 'dislike'}>Dislike</ListGroup.Item>
                         </ListGroup>
                     </div>
                 </Card.Footer>

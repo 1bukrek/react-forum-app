@@ -22,13 +22,13 @@ function Register() {
     return (
         <div className="container border border-dark-subtle rounded-3 w-25" style={{ marginTop: "150px" }}>
             <div className="container" style={{ marginTop: "16px" }}>
-                <h1 className="w-auto mx-0">Register</h1>
-                <hr className="w-auto mx-0"></hr>
+                <h1 className="w-auto mx-0 text-white">Register</h1>
+                <hr className="w-auto mx-0 text-white"></hr>
             </div>
             <div>
                 <Form className="w-auto mx-0" style={{ paddingLeft: "12px", paddingRight: "12px" }}>
                     <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                        <InputGroup.Text className="bg-dark text-secondary border-secondary" id="basic-addon1">@</InputGroup.Text>
                         <Form.Control
                             placeholder="Username"
                             aria-label="Username"
@@ -37,10 +37,11 @@ function Register() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
+                            className="bg-dark border-secondary"
                         />
                     </InputGroup>
                     <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                        <InputGroup.Text style={{ width: "40px" }} className="bg-dark text-secondary border-secondary" id="basic-addon1">$</InputGroup.Text>
                         <Form.Control
                             placeholder="Password"
                             aria-label="Password"
@@ -49,13 +50,14 @@ function Register() {
                             value={password}
                             required
                             onChange={(e) => setPassword(e.target.value)}
+                            className="bg-dark border-secondary"
                         />
                     </InputGroup>
 
                 </Form>
             </div>
             <div className="container mb-3 text-center">
-                <Button className="w-100 mx-0 bg-dark border-dark" onClick={register}>Register</Button>
+                <Button className="w-100 mx-0 bg-dark border-secondary" onClick={register}>Register</Button>
             </div>
             <div className="container">
                 {serverMessage && <Alert variant="danger" className="w-auto mx-auto">{serverMessage}</Alert>}

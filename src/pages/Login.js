@@ -33,13 +33,13 @@ function Login() {
     return (
         <div className="container border border-dark-subtle rounded-3 w-25" style={{ marginTop: "150px" }} >
             <div className="container" style={{ marginTop: "16px" }}>
-                <h1 className="w-auto mx-0">Log in</h1>
-                <hr className="w-auto mx-0"></hr>
+                <h1 className="w-auto mx-0 text-white mb-0">Log in</h1>
+                <hr className="w-auto mx-0 text-white"></hr>
             </div>
             <div className="container">
                 <Form className="w-auto mx-0">
                     <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                        <InputGroup.Text className="bg-dark text-secondary border-secondary" id="basic-addon1">@</InputGroup.Text>
                         <Form.Control
                             placeholder="Username"
                             aria-label="Username"
@@ -48,10 +48,11 @@ function Login() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
+                            className="bg-dark border-secondary"
                         />
                     </InputGroup>
                     <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                        <InputGroup.Text className="bg-dark text-secondary border-secondary" style={{ width: "40px" }} id="basic-addon1">$</InputGroup.Text>
                         <Form.Control
                             placeholder="Password"
                             aria-label="Password"
@@ -60,13 +61,14 @@ function Login() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            className="bg-dark border-secondary"
                         />
                     </InputGroup>
                 </Form>
             </div>
             <div className="container mb-3 text-center">
                 <p><a href="/register" className="link-offset-2 link-underline link-underline-opacity-0 w-auto mx-0">I don't have an account.</a></p>
-                <Button className="mt-0 w-100 mx-0 bg-dark border-dark" onClick={login}>Log in</Button>
+                <Button className="mt-0 w-100 mx-0 bg-dark border-secondary" onClick={login}>Log in</Button>
             </div>
             <div className="container mt-3">
                 {serverMessage && <Alert variant="danger" className="w-auto mx-0">{serverMessage}</Alert>}

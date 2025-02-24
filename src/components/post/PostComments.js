@@ -3,11 +3,11 @@ import { Form, InputGroup, ListGroup, Button } from "react-bootstrap"
 export default function PostComments({ newComment, setNewComment, addComment, comments }) {
     return (
         <>
-            <div className='container col-md-6 ms-md-auto mt-3'>
-                <h3 className='mb-0'>Comments</h3>
-                <hr></hr>
+            <div className='container col-md-6 ms-md-auto mt-3 p-0'>
+                <h3 className='mb-0 text-white text-opacity-75'>Comments</h3>
+                <hr className="text-white m-2 "></hr>
                 <Form>
-                    <InputGroup className="mb-3">
+                    <InputGroup className="mb-3 mt-3">
                         <Form.Control
                             placeholder="Add a comment..."
                             aria-label="Add a comment..."
@@ -15,6 +15,7 @@ export default function PostComments({ newComment, setNewComment, addComment, co
                             type="text"
                             value={newComment}
                             onChange={(e) => setNewComment(e.target.value)}
+                            className="bg-dark border-secondary text-white"
                         />
                         <Button variant="outline-success" id="button-addon2" onClick={addComment} s>
                             Send

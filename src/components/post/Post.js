@@ -9,9 +9,9 @@ export default function Post({ post }) {
     return (
         <>
             <div>
-                <Card className='w-100 mb-3 mt-3'>
+                <Card className='w-100 mb-3 mt-3 bg-dark text-white border-secondary'>
                     <Card.Header>
-                        <p className='mb-0' style={{ fontSize: "0.8rem" }}>u/{post.author} | {`${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`}</p>
+                        <p className='mb-0 text-secondary' style={{ fontSize: "0.8rem" }}>u/{post.author} | {`${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`}</p>
                         <Card.Title className='mb-0 mt-0'>
                             <strong>{post.title}</strong>
                         </Card.Title>

@@ -94,6 +94,28 @@ database.serialize(() => {
             WHERE id = OLD.post_id;
         END;
     `);
+
+    database.run(`
+        CREATE VIRTUAL TABLE IF NOT EXISTS posts_fts 
+        USING fts5(title, description, content='posts', content_rowid='id');
+    `);
+
+    database.run(`
+        CREATE TRIGGER IF NOT EXISTS posts_ai 
+        AFTER INSERT ON posts 
+        BEGIN
+            INSERT INTO posts_fts(rowid, title, description) 
+            VALUES (new.id, new.title, new.description);
+        END;
+    `);
+
+    database.run(`
+        CREATE TRIGGER IF NOT EXISTS posts_ad 
+        AFTER DELETE ON posts 
+        BEGIN
+            DELETE FROM posts_fts WHERE rowid = old.id;
+        END;
+    `);
 })
 
 export default database
