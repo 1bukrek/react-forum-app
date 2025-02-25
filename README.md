@@ -12,6 +12,7 @@ To start the project in development mode:
 2. Run `npm install` command to install node modules.
 3. Run `npm start` command in the project directory to start react app.
 4. Run `cd server` and `node server` to start **express server** in seperate terminal.
+5. Go to `http://localhost:3000` in your browser.
 
 If you want to build the app for **production**, run `npm build` command in terminal.
 
