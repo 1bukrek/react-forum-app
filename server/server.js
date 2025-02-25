@@ -177,4 +177,21 @@ app.post("/api/get-home-page", (req, res) => {
     });
 })
 
+app.get("/search", (req, res) => {
+    const { query } = req.query
+    if (!query) return res.json([])
+
+    console.log("deneme")
+
+    database.all(
+        `SELECT posts.* FROM posts JOIN posts_fts ON posts.id = posts_fts.rowid WHERE posts_fts MATCH ?`, [query], (err, rows) => {
+            if (err) {
+                console.error("FTS SEARCH ERROR: ", err.message)
+                return res.status(500).json({ message: err.message })
+            }
+            res.json({ rows: rows })
+        }
+    )
+})
+
 app.listen(3001, () => console.warn("SERVER IS RUNNING ON http://localhost:3001"));

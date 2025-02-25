@@ -1,7 +1,20 @@
 # React Forum App
 
-The React Forum App is a dynamic and interactive discussion platform built with React and Node.js. It features a basic authentication system using bcrypt and JWT tokens, allowing users to register, log in, and participate in discussions under posts. The app includes a structured comment and vote system to provide an user-friendly experience for users.
+React Forum App is a simple discussion platform built with React and Express.
 
-### Packages Used
+This project features a basic authentication system using bcrypt and jsonwebtoken, allowing users to create accounts and log in. It is integrated with sqlite3 as database management system.
 
-`react`, `bootstrap`, `sqlite3`, `jsonwebtoken`, `bcrypt`, `cors`
+## Setup and Use
+
+To start the project in development mode:
+
+1. Run `git clone https://github.com/1bukrek/react-forum-app.git` to clone the repository.
+2. Run `npm install` command to install node modules.
+3. Run `npm start` command in the project directory to start react app.
+4. Run `cd server` and `node server` to start **express server** in seperate terminal.
+
+If you want to build the app for **production**, run `npm build` command in terminal.
+
+---
+
+This project was bootstrapped.

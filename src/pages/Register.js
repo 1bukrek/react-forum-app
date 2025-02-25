@@ -37,7 +37,7 @@ function Register() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
-                            className="bg-dark border-secondary"
+                            className="bg-dark border-secondary text-white"
                         />
                     </InputGroup>
                     <InputGroup className="mb-3">
@@ -50,7 +50,7 @@ function Register() {
                             value={password}
                             required
                             onChange={(e) => setPassword(e.target.value)}
-                            className="bg-dark border-secondary"
+                            className="bg-dark border-secondary text-white"
                         />
                     </InputGroup>
 

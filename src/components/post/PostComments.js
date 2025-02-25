@@ -13,20 +13,21 @@ export default function PostComments({ newComment, setNewComment, addComment, co
                             aria-label="Add a comment..."
                             aria-describedby="basic-addon2"
                             type="text"
+                            maxLength={300}
                             value={newComment}
                             onChange={(e) => setNewComment(e.target.value)}
                             className="bg-dark border-secondary text-white"
                         />
-                        <Button variant="outline-success" id="button-addon2" onClick={addComment} s>
-                            Send
+                        <Button variant="outline-success" id="button-addon2" onClick={addComment}>
+                            Add Comment
                         </Button>
                     </InputGroup>
                 </Form>
             </div>
-            <div className='container col-md-6 ms-md-auto mt-3'>
+            <div className='container col-md-6 ms-md-auto mt-3 px-0'>
                 {comments.map((comment) => (
                     <ListGroup key={comment.id}>
-                        <ListGroup.Item className='mb-3' style={{ paddingLeft: "25px" }}>
+                        <ListGroup.Item className='mb-3 bg-dark text-white border-secondary' style={{ paddingLeft: "25px" }}>
                             <a href={`/user/${comment.username}`} className='row' style={{ fontWeight: "bold" }}>u/{comment.username}</a>
                             <p className='row mb-0'>{comment.content}</p>
                         </ListGroup.Item>

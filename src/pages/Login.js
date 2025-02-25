@@ -48,7 +48,7 @@ function Login() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
-                            className="bg-dark border-secondary"
+                            className="bg-dark border-secondary text-white"
                         />
                     </InputGroup>
                     <InputGroup className="mb-3">
@@ -61,7 +61,7 @@ function Login() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className="bg-dark border-secondary"
+                            className="bg-dark border-secondary text-white"
                         />
                     </InputGroup>
                 </Form>

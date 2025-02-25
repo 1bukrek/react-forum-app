@@ -65,7 +65,7 @@ export default function CreatePost() {
                     <Toast.Body>{notificationMessage}</Toast.Body>
                 </Toast>
             </ToastContainer>
-            <Button onClick={handleShow} className="bg-transparent border text-secondary-emphasis border-light-subtle">Create Post</Button>
+            <Button onClick={handleShow} variant="outline-secondary">Create Post</Button>
             <Modal show={show} onHide={handleCloseCancel} keyboard={false} backdrop="static">
                 <Modal.Header closeButton className="bg-dark text-white border-secondary">
                     <Modal.Title>Create Post</Modal.Title>
