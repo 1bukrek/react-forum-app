@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
 
-import Post from "../components/post/Post.js";
+import SearchResult from "../components/home/SearchResult.js";
+import RandomPostResult from "../components/home/RandomPostResults.js";
 
 function Home() {
 
@@ -26,17 +26,8 @@ function Home() {
 
     return (
         <>
-            <Container className="w-50 mx-auto container col-md-5 ms-md-auto">
-                {posts.length > 0 &&
-                    posts.map((post, index) => {
-                        return (
-                            <div key={index}>
-                                <Post post={post} />
-                            </div>
-                        )
-                    })
-                }
-            </Container>
+            <SearchResult />
+            <RandomPostResult posts={posts} />
         </>
     )
 }

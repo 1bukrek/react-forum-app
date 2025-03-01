@@ -1,12 +1,31 @@
 import { Navbar, Container, Nav, InputGroup, Form, Button } from "react-bootstrap";
 import CreatePost from "./post/CreatePost.js";
-import { useState } from "react";
+import { useContext } from "react";
+import { SearchContext } from "../context/SearchContext.js"; // Eski haline getirildi
 
 function CustomNavbar() {
-    const [searchQuery, setSearchQuery] = useState("")
+    const { searchQuery, setSearchQuery, setSearchResults } = useContext(SearchContext);
 
     async function search() {
-        const res = await fetch(`/search?query=${encodeURIComponent(searchQuery)}`);
+        try {
+            const res = await fetch(`http://localhost:3001/search?query=${searchQuery}`);
+            if (res.ok) {
+                const data = await res.json();
+                setSearchResults(data.results); // Assuming the response has a 'results' field
+                console.log(data.results);
+            } else {
+                console.error("Search request failed");
+            }
+        } catch (error) {
+            console.error("Error during search:", error);
+        }
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            search();
+        }
     }
 
     return (
@@ -27,6 +46,7 @@ function CustomNavbar() {
                             aria-label="Search on Convonet"
                             aria-describedby="basic-addon1"
                             onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyPress={handleKeyPress}
                             id="searchQuery"
                             value={searchQuery}
                             required
@@ -47,7 +67,7 @@ function CustomNavbar() {
                 </Container>
             </Navbar>
         </div>
-    )
+    );
 }
 
 export default CustomNavbar;
