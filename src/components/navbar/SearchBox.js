@@ -50,22 +50,26 @@ export default function SearchBox() {
                     </Button>
                 </InputGroup>
                 {isFocused && searchQuery && (
-                    <div className="position-absolute bg-dark text-white border rounded p-1 w-100"
-                        style={{ cursor: "pointer", top: "100%", zIndex: 10, fontSize: "0.875rem", boxShadow: "0px 2px 5px rgba(0,0,0,0.1)" }}
+                    <div className="position-absolute bg-dark text-white border rounded p-1 w-100 mt-2"
+                        style={{ top: "100%", zIndex: 10, fontSize: "1rem", boxShadow: "0px 2px 5px rgba(0,0,0,0.1)" }}
                         onClick={search}>
 
                         {labelSearchResults.length > 0 && (
-                            labelSearchResults.map((result, index) => (
-                                <div key={index} onClick={() => { setSearchQuery(result.title); search() }}>
-                                    {result.title}
-                                </div>
-                            ))
+                            <>
+                                <p className="text-muted fw-bold mb-0 p-1 pb-0">Posts</p>
+                                <hr className="m-0 mt-1"></hr>
+                                {labelSearchResults.map((result, index) => (
+                                    <div style={{ cursor: "pointer" }} key={index} onClick={() => { setSearchQuery(result.title); search() }}>
+                                        <p className="mb-0 p-1">{result.title} <small className="text-secondary">u/{result.author}</small></p>
+                                    </div>
+                                ))}
+                                <hr className="mb-2 mt-1"></hr>
+                            </>
                         )}
-
-                        <i className="bi bi-search"></i> Search for "<strong>{searchQuery}</strong>"
+                        <i className="bi bi-search" style={{ cursor: "pointer" }}></i> Search for "<strong>{searchQuery}</strong>"
                     </div>
                 )}
-            </Container>
+            </Container >
         </>
     )
 }
