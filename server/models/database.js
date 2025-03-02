@@ -10,7 +10,7 @@ const sqlite3 = sqlite.verbose()
 
 // create a new database object
 const database = new sqlite3.Database(path.join(__dirname, "forum_app.db"), (err) => {
-    if (err) console.error("DATABASE ERROR: ", err.message)
+    if (err) console.error("Failed to connect to the database: ", err.message)
 })
 
 database.serialize(() => {
@@ -98,23 +98,6 @@ database.serialize(() => {
     database.run(`
         CREATE VIRTUAL TABLE IF NOT EXISTS posts_fts 
         USING fts5(title, description, content='posts', content_rowid='id');
-    `);
-
-    database.run(`
-        CREATE TRIGGER IF NOT EXISTS posts_ai 
-        AFTER INSERT ON posts 
-        BEGIN
-            INSERT INTO posts_fts(rowid, title, description) 
-            VALUES (new.id, new.title, new.description);
-        END;
-    `);
-
-    database.run(`
-        CREATE TRIGGER IF NOT EXISTS posts_ad 
-        AFTER DELETE ON posts 
-        BEGIN
-            DELETE FROM posts_fts WHERE rowid = old.id;
-        END;
     `);
 })
 

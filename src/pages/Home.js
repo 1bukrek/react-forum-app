@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import SearchResult from "../components/home/SearchResult.js";
 import RandomPostResult from "../components/home/RandomPostResults.js";
+import React from "react";
+import { SearchContext } from "../context/SearchContext.js";
 
 function Home() {
 
     const token = sessionStorage.getItem("token")
     if (!token) window.location.href = "/login"
 
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
+
 
     useEffect(() => {
         const getPosts = async () => {
@@ -24,10 +27,11 @@ function Home() {
         getPosts();
     }, [])
 
+    const { isSearching } = useContext(SearchContext);
+
     return (
         <>
-            <SearchResult />
-            <RandomPostResult posts={posts} />
+            {isSearching ? <SearchResult /> : <RandomPostResult posts={posts} />}
         </>
     )
 }
